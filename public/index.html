@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Calculator</title>
+  <meta name="description" content="A minimalist, elegant calculator." />
+  <meta name="theme-color" content="#f3efe8" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter+Tight:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/styles.css" />
+  <script>
+    (function () {
+      var t = localStorage.getItem('calc-theme');
+      if (!t) t = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      document.documentElement.dataset.theme = t;
+    })();
+  </script>
+</head>
+<body>
+  <main class="stage">
+    <header class="brand">
+      <span class="mark">Calculus<em>.</em></span>
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle dark mode">
+        <span class="dot"></span>
+      </button>
+    </header>
+
+    <section class="calc" aria-label="Calculator">
+      <div class="display" aria-live="polite">
+        <div class="expression" id="expression">&nbsp;</div>
+        <output class="result" id="result">0</output>
+      </div>
+
+      <div class="keys" id="keys">
+        <button class="key fn" data-action="clear" id="clearKey">AC</button>
+        <button class="key fn" data-action="negate" aria-label="Toggle sign">+/−</button>
+        <button class="key fn" data-action="percent" aria-label="Percent">%</button>
+        <button class="key op" data-op="/" aria-label="Divide">÷</button>
+
+        <button class="key" data-digit="7">7</button>
+        <button class="key" data-digit="8">8</button>
+        <button class="key" data-digit="9">9</button>
+        <button class="key op" data-op="*" aria-label="Multiply">×</button>
+
+        <button class="key" data-digit="4">4</button>
+        <button class="key" data-digit="5">5</button>
+        <button class="key" data-digit="6">6</button>
+        <button class="key op" data-op="-" aria-label="Subtract">−</button>
+
+        <button class="key" data-digit="1">1</button>
+        <button class="key" data-digit="2">2</button>
+        <button class="key" data-digit="3">3</button>
+        <button class="key op" data-op="+" aria-label="Add">+</button>
+
+        <button class="key" data-action="backspace" aria-label="Delete last digit">⌫</button>
+        <button class="key" data-digit="0">0</button>
+        <button class="key" data-action="decimal" aria-label="Decimal point">.</button>
+        <button class="key eq" data-action="equals" aria-label="Equals">=</button>
+      </div>
+    </section>
+
+    <footer class="foot">Keyboard friendly &middot; <kbd>0–9</kbd> <kbd>+ − × ÷</kbd> <kbd>Enter</kbd> <kbd>Esc</kbd></footer>
+  </main>
+  <script src="/app.js"></script>
+</body>
+</html>
